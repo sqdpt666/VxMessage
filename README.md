@@ -1,9 +1,13 @@
 # VxMessage
 微信公众号模板消息推送。
+
+采用SpringBoot，通过定时任务实现每天定时发送消息。
+
 只需要修改`MessageService`和`VxUtil`中用中文写的内容，替换成你自己从[微信公众号测试平台](https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&t=sandbox/index)
 获取的内容。
 
 修改的具体如下：
+
 MessageService
 ```java
 
