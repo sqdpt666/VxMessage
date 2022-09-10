@@ -28,17 +28,17 @@ public class MessageService {
      *
      * 	最后，开心每一天！
      */
-    @Scheduled(cron = "0 0 9 * * ?")
+    @Scheduled(cron = "0 0 9 * * ?") //可以修改成你要的时间
     public void sendMessage(){
         VxMessageDto dto = new VxMessageDto();
-        dto.setTemplate_id("你的模板ID");
-        dto.setTouser("用户ID");
+        dto.setTemplate_id("你的模板ID");  //修改成你的模板ID
+        dto.setTouser("用户ID"); //修改成你的用户ID
         HashMap<String, DataInfo> map = new HashMap<>();
-        setMap(map,"userName","名字","#FFCCCC");
-        setMap(map,"holdDay", DateUtil.passDay(2020,7,8),"#FFCCCC");
-        setMap(map,"yourBirthDay",DateUtil.getNextBirthDay(8,11),"#FFCCCC");
-        setMap(map,"myBirthDay", DateUtil.getNextChineseBirthDay(2,15),"#FFCCCC");
-        setMap(map,"loveDay",DateUtil.getNextBirthDay(7,8),"#FFCCCC");
+        setMap(map,"userName","名字","#FFCCCC"); //改成她的名字
+        setMap(map,"holdDay", DateUtil.passDay(2020,7,8),"#FFCCCC"); //改成你在一起的时间
+        setMap(map,"yourBirthDay",DateUtil.getNextBirthDay(8,11),"#FFCCCC"); //改成她的生日
+        setMap(map,"myBirthDay", DateUtil.getNextChineseBirthDay(2,15),"#FFCCCC"); //改成你的生日
+        setMap(map,"loveDay",DateUtil.getNextBirthDay(7,8),"#FFCCCC"); //改成你在一起的时间
         dto.setData(map);
         String message = JSONUtil.toJsonStr(dto);
         VxUtil.sendMessage(message);
