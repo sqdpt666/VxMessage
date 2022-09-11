@@ -44,7 +44,7 @@
                 <version>2.2.2.RELEASE</version>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
-                    <mainClass>com.pt.vx.VxMessageMain</mainClass>
+                    <mainClass>vx.VxMessageMain</mainClass>
                 </configuration>
                 <executions>
                     <execution>
