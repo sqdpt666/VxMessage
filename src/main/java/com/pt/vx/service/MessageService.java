@@ -28,10 +28,10 @@ public class MessageService {
      *
      * 	最后，开心每一天！
      */
-    @Scheduled(cron = "0 0 9 * * ?") //可以修改成你要的时间
+    @Scheduled(cron = "* * 9 * * ?") //可以修改成你要的时间
     public void sendMessage(){
         VxMessageDto dto = new VxMessageDto();
-        dto.setTemplate_id("你的模板ID");  //修改成你的模板ID
+        dto.setTemplate_id("模板ID");  //修改成你的模板ID
         dto.setTouser("用户ID"); //修改成你的用户ID
         HashMap<String, DataInfo> map = new HashMap<>();
         setMap(map,"userName","名字","#FFCCCC"); //改成她的名字
