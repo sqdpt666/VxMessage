@@ -1,5 +1,5 @@
 # VxMessage
-微信公众号模板消息推送。
+微信公众号模板消息推送SpringBoot版本。
 
 采用SpringBoot，通过定时任务实现每天定时发送消息。
 
