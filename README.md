@@ -19,8 +19,8 @@ MessageService
         HashMap<String, DataInfo> map = new HashMap<>();
         setMap(map,"userName","名字","#FFCCCC"); //改成她的名字
         setMap(map,"holdDay", DateUtil.passDay(2020,7,8),"#FFCCCC"); //改成你在一起的时间
-        setMap(map,"yourBirthDay",DateUtil.getNextBirthDay(8,11),"#FFCCCC"); //改成她的生日
-        setMap(map,"myBirthDay", DateUtil.getNextChineseBirthDay(2,15),"#FFCCCC"); //改成你的生日
+        setMap(map,"yourBirthDay",DateUtil.getNextBirthDay(8,11),"#FFCCCC"); //改成她的生日（getNextChineseBirthDay为农历，getNextBirthDay为公历）
+        setMap(map,"myBirthDay", DateUtil.getNextChineseBirthDay(2,15),"#FFCCCC"); //改成你的生日（getNextChineseBirthDay为农历，getNextBirthDay为公历）
         setMap(map,"loveDay",DateUtil.getNextBirthDay(7,8),"#FFCCCC"); //改成你在一起的时间
         dto.setData(map);
         String message = JSONUtil.toJsonStr(dto);
