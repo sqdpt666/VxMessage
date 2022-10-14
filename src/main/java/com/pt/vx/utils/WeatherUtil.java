@@ -1,7 +1,6 @@
 package com.pt.vx.utils;
 
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.pt.vx.config.AllConfig;
 import com.pt.vx.domain.weather.Code;

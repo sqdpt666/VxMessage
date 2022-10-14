@@ -14,18 +14,21 @@ import java.util.List;
  * 成功了的小伙伴，欢迎来点赞投币评论哦~
  * 国庆节快乐！
  *               -- 2022/10/1
+ *
+ * 注意：改下面的信息的时候，细心一点。
+ * 有双引号("")的不要把双引号给丢了,标点符号记得用英文输入法！！！
+ *               -- 2022/10/5
  */
 public class AllConfig {
-    public static final String cron = "* 8 * * * ?"; //分、时、天、月、年、星期
+    public static final String cron = "0 0 8 * * ?"; //分别代表：秒、分、时、日、月、星期
     public static final String VxAppId = "微信的APPID";
     public static final String VxAppSecret = "微信的密钥";
     public static final String WeatherKey = "高德地图key";
 
-
     //下列所有填写的  true 为开启， false 为不开启 ，#XXXXXX是颜色16进制HEX码（不知道颜色16进制HEX码可以百度）
     //系统开关
     public static final boolean OPEN_MESSAGE_SPLIT = true; //是否开启消息分裂（大于100字的消息会被分裂成多个,如tianGou超过了一百个字的话：{{tianGou.DATA}}{{tianGou1.DATA}}））
-    public static final boolean OPEN_WEATHER_NOW = false; //切换天气类型为实时（true为天气预报，false为实时天气）
+    public static final boolean OPEN_WEATHER_NOW = false; //切换天气类型为实时（false为天气预报，true为实时天气）
     public static final boolean OPEN_MASTER_MODEL = false; //是否开启主人模式。开启后，后面的用户只会收到第一个用户的内容。
     public static final boolean OPEN_RANDOM_COLOR = true; //是否开启随机消息颜色
     public static final String[] random_colors = {"#FFCCCC", "#33A1C9", "#DC143C","#FF0000","#6B8E23","#236B8E","#FF7F00"}; //参与随机的颜色,颜色为颜色HEX码（不知道可以百度）
@@ -36,7 +39,7 @@ public class AllConfig {
     public static final FunctionConfig open_birthDay = new FunctionConfig(true,"#FFCCCC"); //是否开启日期计算
     public static final FunctionConfig open_weather = new FunctionConfig(true,"#33A1C9"); //是否开启天气预报
     public static final FunctionConfig open_other_info= new FunctionConfig(true,"#DC143C"); //是否开启额外信息（需要开启日期计算或天气预报）
-    public static final String info_birthday = "生日快乐！！！"; //第三个日期倒计时到0天的时候展示的额外信息
+    public static final String info_birthday = "生日快乐！！！"; //第一个日期倒计时到0天的时候展示的额外信息
     public static final String info_birthday2 = "周年快乐！！！"; //第三个日期倒计时到0天的时候展示的额外信息
     public static final String info_weather_rain = "出门记得带伞哦~"; //天气预报有雨的时候展示的额外信息
     public static final String info_weather_temperature_0 = "温度过低，加厚加厚！！！"; //温度≤0的时候展示的额外信息
@@ -65,13 +68,15 @@ public class AllConfig {
         //如果要多个人的话，就复制这个一遍，然后填写里面的内容。这里默认两个人,大伙应该是两个人吧（笑）
         //如果开启了master模式，除第一个用户外，其他用户只需要填写微信号
         //要计算几个日期，就写几个new BirthDay,第一个在模板中是{{birthDay.DATA}}，第二个是{{birthDay1.DATA}}，第三个是{{birthDay2.DATA}}以此类推
+        //  注意：日期里面的数字，填正常的数字就行了.比如1就是1，不要填01
+        //  注意：每个用户信息的最后一项不需要加逗号！！！
         userList.add(getUser(
-                "这个人的微信号",//扫码关注你的测试号以后，测试平台会出现TA的微信号
-                "模板ID",//要给这个人发送的模板ID
-                "pt",//咋称呼这个人
-                "江苏省南京市玄武区",//这个人的详细地址
-                "南京",//这个人在的城市
-                new BirthDay(1999,2,15,true,false),//分别代表年、月、日、是否是农历(true为农历、false为公历)、是否统计天数(true为统计，false为倒计时)
+                "这个人的微信号", //扫码关注你的测试号以后，测试平台会出现TA的微信号
+                "模板ID", //要给这个人发送的模板ID
+                "pt", //咋称呼这个人
+                "江苏省南京市玄武区", //这个人的详细地址
+                "南京", //这个人在的城市
+                new BirthDay(1999,2,15,true,false), //分别代表年、月、日、是否是农历(true为农历、false为公历)、是否统计天数(true为统计，false为倒计时)
                 new BirthDay(1999,8,11,false,false),
                 new BirthDay(2020,7,8,true,true),
                 new BirthDay(2020,7,8,true,false)

@@ -5,13 +5,11 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.date.ChineseDate;
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.pt.vx.domain.Api.*;
 import com.pt.vx.domain.BirthDay;
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -132,8 +130,9 @@ public class ApiUtil {
      * @return 获取一条土味情话
      */
     public static String getQingHua(){
-        String result = HttpUtil.get(qinghua, StandardCharsets.UTF_8);
-        logger.info(String.format("获取情话 %s", result));
+        String result = HttpUtil.get(qinghua);
+        String format = String.format("获取情话 %s", result);
+        logger.info(format);
         return result;
     }
 
@@ -141,8 +140,9 @@ public class ApiUtil {
      * @return 每日英语
      */
     public static String getEnglish(){
-        String re = HttpUtil.get(en, StandardCharsets.UTF_8);
-        logger.info(String.format("获取英语 %s", re));
+        String re = HttpUtil.get(en);
+        String format = String.format("获取英语 %s", re);
+        logger.info(format);
         return re;
     }
 
@@ -151,7 +151,7 @@ public class ApiUtil {
      * @return 世界新闻
      */
     public static String getWorldRead60s(){
-        String result = HttpUtil.get(WorldRead60sApi, StandardCharsets.UTF_8);
+        String result = HttpUtil.get(WorldRead60sApi);
         logger.info(String.format("获取世界新闻 %s", result));
         Result re = JSONUtil.toBean(result, Result.class);
         WorldRead60s worldRead60s = JSONUtil.toBean(re.getData(), WorldRead60s.class);
@@ -173,7 +173,7 @@ public class ApiUtil {
 
 
     public static String getMiYu(){
-        String result = HttpUtil.get(miyuApi, StandardCharsets.UTF_8);
+        String result = HttpUtil.get(miyuApi);
         logger.info(String.format("获取谜语 %s", result));
         MiYuDto miYuDto = JSONUtil.toBean(result, MiYuDto.class);
         return "小谜语"+"\n"+miYuDto.getMt();
@@ -185,7 +185,7 @@ public class ApiUtil {
      * @return 舔狗日记
      */
     public static String getTgrj(){
-        String result = HttpUtil.get(tgrj, StandardCharsets.UTF_8);
+        String result = HttpUtil.get(tgrj);
         logger.info(String.format("获取舔狗日记 %s", result));
         return result;
     }
@@ -195,7 +195,7 @@ public class ApiUtil {
      * @return 随机一句
      */
     public static String getRandomRead(){
-        String result = HttpUtil.get(randomRead, StandardCharsets.UTF_8);
+        String result = HttpUtil.get(randomRead);
         logger.info(String.format("获取短句 %s", result));
         result =  StringEscapeUtils.unescapeJava(result);
         RandomRead read = JSONUtil.toBean(result, RandomRead.class);
@@ -208,7 +208,7 @@ public class ApiUtil {
      * @return 每日星座情况
      */
     private static String getHoroscopeRead(String horoscope){
-        String result = HttpUtil.get(String.format(horoscopeApi, horoscope), StandardCharsets.UTF_8);
+        String result = HttpUtil.get(String.format(horoscopeApi, horoscope));
         if(ObjectUtil.isEmpty(result)){
             logger.warning(String.format("获取星座解析失败，星座为：%s",horoscope ));
             return "";
@@ -250,7 +250,7 @@ public class ApiUtil {
         return stringBuilder.toString();
     }
     public static String getHoroscopeRead2(BirthDay birthDay){
-        return HttpUtil.get(String.format(horoscopeApi2, getHoroscopeChina(birthDay)), StandardCharsets.UTF_8);
+        return HttpUtil.get(String.format(horoscopeApi2, getHoroscopeChina(birthDay)));
     }
 
     public static String getHoroscopeRead(BirthDay birthDay){
