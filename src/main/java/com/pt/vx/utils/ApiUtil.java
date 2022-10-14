@@ -222,12 +222,6 @@ public class ApiUtil {
         stringBuilder
                 .append(horoscopeDto.getTitle())
                 .append("\n")
-                .append("幸运色:")
-                .append(horoscopeDto.getLuckycolor())
-                .append("\n")
-                .append("幸运数:")
-                .append(horoscopeDto.getLuckynumber())
-                .append("\n")
                 .append("概况:")
                 .append(horoscopeDto.getShortcomment())
                 .append("\n")

@@ -171,7 +171,7 @@ public class MessageService {
     }
     private void setHoroscope(HashMap<String, DataInfo> map,User user){
         BirthDay birthDay = user.getBirthDays()[0];
-        String horoscopeRead = ApiUtil.getHoroscopeRead2(birthDay);
+        String horoscopeRead = ApiUtil.getHoroscopeRead(birthDay);
         setMap(map,KeyConfig.KEY_HOROSCOPE,horoscopeRead,AllConfig.open_horoscope);
     }
     private void setName(HashMap<String, DataInfo> map,User user){
