@@ -2,7 +2,6 @@ package com.pt.vx.utils;
 
 import cn.hutool.core.date.ChineseDate;
 
-
 import java.time.LocalDate;
 
 public class DateUtil {
@@ -16,6 +15,25 @@ public class DateUtil {
      * @return 天数
      */
     public static String passDay(int year,int month,int day){
+        LocalDate start = LocalDate.of(year, month, day);
+        LocalDate now = LocalDate.now();
+        return passDay(now,start);
+    }
+
+    public static String passDayChinese(int year,int month,int day){
+        ChineseDate chineseDate = new ChineseDate(year,month,day);
+        int gregorianYear = chineseDate.getGregorianYear();
+        int gregorianMonthBase1 = chineseDate.getGregorianMonthBase1();
+        int gregorianDay = chineseDate.getGregorianDay();
+        LocalDate start = LocalDate.of(gregorianYear, gregorianMonthBase1, gregorianDay);
+        LocalDate now = LocalDate.now();
+        return passDay(now,start);
+    }
+    
+    public static String passDayOfNow(LocalDate source){
+        int year = source.getYear();
+        int month = source.getMonthValue();
+        int day = source.getDayOfMonth();
         LocalDate start = LocalDate.of(year, month, day);
         LocalDate now = LocalDate.now();
         return passDay(now,start);
@@ -47,13 +65,22 @@ public class DateUtil {
 
         //生日已经过去
         if(monthValue > month || (monthValue == month && dayOfMonth > day)){
-            LocalDate of = LocalDate.of(++year, month, day);
-            return passDay(of,now);
+            year++;
         }
-        return passDay(now,LocalDate.of(year, month, day));
-
+        return passDay(LocalDate.of(year, month, day),now);
     }
 
+    public static String getNextBirthDay(LocalDate birthday){
+        int month = birthday.getMonthValue();
+        int day = birthday.getDayOfMonth();
+        return getNextBirthDay(month,day);
+    }
+
+    public static String getNextChineseBirthDay(LocalDate birthday){
+        int month = birthday.getMonthValue();
+        int day = birthday.getDayOfMonth();
+        return getNextChineseBirthDay(month,day);
+    }
 
     /**
      * 获取距离农历生日的天数
@@ -87,11 +114,11 @@ public class DateUtil {
             }
 
             //返回闰月生日
-            return passDay(now,LocalDate.of(year,greMonth2,greDay2));
+            return passDay(LocalDate.of(year,greMonth2,greDay2),now);
 
         }
 
-        return passDay(now,LocalDate.of(year,greMonth,greDay));
+        return passDay(LocalDate.of(year,greMonth,greDay),now);
     }
 
 
