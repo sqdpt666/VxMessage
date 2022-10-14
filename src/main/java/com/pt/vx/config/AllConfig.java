@@ -16,7 +16,7 @@ import java.util.List;
  *               -- 2022/10/1
  */
 public class AllConfig {
-    public static final String cron = "* 8 * * * ?"; //分、时、天、月、年、星期
+    public static final String cron = "0 0 8 * * ?"; //分别代表：秒、分、时、日、月、星期
     public static final String VxAppId = "微信的APPID";
     public static final String VxAppSecret = "微信的密钥";
     public static final String WeatherKey = "高德地图key";
